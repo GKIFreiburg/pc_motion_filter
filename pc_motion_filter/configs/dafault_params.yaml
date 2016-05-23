@@ -1,0 +1,6 @@
+linear_throshold: 0.01 # m
+degree_threshold: 1 # degree
+stillness_duration: 1.0 # s
+frame_ids: 
+- map 
+- base_link

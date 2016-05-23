@@ -1,0 +1,7 @@
+<library path="lib/libpc_motion_filter">
+	<class name="pc_motion_filter/PcMotionFilter" type="pc_motion_filter::PcMotionFilter" base_class_type="nodelet::Nodelet">
+		<description>
+			Suppresses point cloud messages if one of the specified frames moved relative to the point cloud frame.
+		</description>
+	</class>
+</library>

@@ -1,0 +1,5 @@
+<launch>
+	<node pkg="pc_motion_filter" type="pc_motion_filter.py" name="kinect_filter">
+		<rosparam command="load" file="$(find pc_motion_filter)/default_params.yaml" />
+	</node>
+</launch>

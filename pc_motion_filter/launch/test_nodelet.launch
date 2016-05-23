@@ -1,0 +1,35 @@
+<launch>
+  <arg name="openni_nodelet_manager_name" default="openni_nodelet_manager"/>
+
+	<node pkg="nodelet" type="nodelet" name="kinect_motion_filter" args="load pc_motion_filter/PcMotionFilter $(arg openni_nodelet_manager_name)" respawn="false" output="screen">
+		<rosparam>
+linear_threshold: 0.01 # m
+degree_threshold: 1 # degree
+stillness_duration: 1.0 # s
+frame_ids: 
+- base_link
+- r_wrist_roll_link
+- l_wrist_roll_link
+#- odom
+#- map
+		</rosparam>
+		<remap from="input" to="/head_mount_kinect2/depth_registered/points"/>
+		<remap from="output" to="/head_mount_kinect/depth_registered/points_motion_filtered"/>
+	</node>
+<!-- 
+		<remap from="~cloud_in" to="/head_mount_kinect2/depth_registered/points"/>
+		<remap from="~cloud_out" to="/head_mount_kinect/depth_registered/points_motion_filtered"/>
+	<node pkg="nodelet" type="nodelet" name="kinect_gound_filter" args="load pcl/PassThrough $(arg openni_nodelet_manager_name)" respawn="false">
+		<rosparam>filter_field_name: z
+filter_limit_min: 0.05
+filter_limit_max: 2.0
+filter_limit_negative: false
+keep_organized: true
+input_frame: /base_link</rosparam>
+		<remap from="~input" to="/head_mount_kinect2/depth_registered/points"/>
+		<remap from="~output" to="/head_mount_kinect/depth_registered/points_ground_filtered"/>
+	</node>
+ -->
+
+</launch>
+
